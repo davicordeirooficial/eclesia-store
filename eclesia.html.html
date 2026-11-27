@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eclesia Story — moda cristã com propósito. Camisetas e moletons com estampas inspiradas na fé.">
+<title>Eclesia Story | Vista sua fé</title>
+<style>
+:root{--green:#1e2b20;--green2:#314432;--cream:#f7f1e8;--sand:#e7d8c5;--ink:#171915;--muted:#77766f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fbf8f3;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+.top{background:var(--green);color:white;text-align:center;padding:9px;font-size:12px;letter-spacing:.08em}
+header{background:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:17px 5%;gap:20px;position:sticky;top:0;z-index:5;border-bottom:1px solid #e5ddcf}
+.logo{font-family:Georgia,serif;font-size:25px;letter-spacing:.04em;line-height:1}.logo small{display:block;font:10px Arial;letter-spacing:.22em;margin-top:6px}
+nav{display:flex;gap:24px;font-size:14px}nav a:hover{color:#697b60}
+.header-actions{display:flex;gap:10px;align-items:center}.search{border:1px solid #d7cdbd;background:white;border-radius:25px;padding:10px 14px;width:190px}.cart-btn,.primary,.add{border:0;background:var(--green);color:white;border-radius:7px;padding:11px 16px}
+.hero{min-height:430px;background:linear-gradient(90deg,rgba(12,18,13,.88),rgba(12,18,13,.15)),url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1800&q=85') center/cover;display:flex;align-items:center;padding:55px 8%;color:white}
+.hero-copy{max-width:520px}.eyebrow{letter-spacing:.22em;font-size:11px;text-transform:uppercase}.hero h1{font:clamp(42px,6vw,76px)/.98 Georgia,serif;margin:18px 0}.hero p{font-size:17px;line-height:1.6;max-width:430px}.hero .primary{background:#e8d5b8;color:#172018;margin-top:14px;font-weight:bold}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#eee5d9;padding:18px 5%;text-align:center;font-size:13px}
+main{max-width:1400px;margin:auto;padding:50px 5%}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.section-head h2{font:42px Georgia,serif;margin:5px 0}.filters{display:flex;gap:10px;flex-wrap:wrap}.filters button,.filters select{border:1px solid #d9d0c4;background:white;border-radius:22px;padding:10px 16px}.filters button.active{background:var(--green);color:white}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 17px}.product{background:white;border:1px solid #eee8df;border-radius:10px;overflow:hidden;box-shadow:0 4px 15px #20180b0a}.gallery{position:relative;background:#e9e1d6;aspect-ratio:4/5;overflow:hidden}.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.gallery:hover img{transform:scale(1.035)}
+.gallery .print{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);color:white;text-align:center;text-shadow:0 2px 6px #000;max-width:55%;font-family:Georgia,serif;font-weight:bold;font-size:clamp(12px,1.25vw,20px);line-height:1.15;pointer-events:none;white-space:pre-line}
+.gallery .verse{font:8px Arial;display:block;margin-top:7px;letter-spacing:.1em}
+.gallery-nav{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:6px}.gallery-nav button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:#ffffff80}.gallery-nav button.active{background:white}
+.product-info{padding:13px}.product-info h3{font-size:15px;margin:0 0 6px}.category{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}.price{font-weight:bold;margin:10px 0}.sizes{font-size:12px;color:#666;margin-bottom:10px}.add{width:100%;padding:11px}
+.about{background:#eae0d2;padding:55px 8%;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.about h2{font:40px Georgia,serif;margin:8px 0}.about p{line-height:1.7;color:#494940}
+footer{background:var(--green);color:white;padding:35px 6%;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap;font-size:13px}.footer-logo{font:26px Georgia,serif}
+.drawer-backdrop{display:none;position:fixed;inset:0;background:#0008;z-index:10}.drawer{position:absolute;right:0;top:0;height:100%;width:min(420px,100%);background:#fff;padding:24px;overflow:auto}.drawer h2{font:30px Georgia;margin-top:0}.close{float:right;border:0;background:none;font-size:25px}.cart-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding:13px 0;font-size:14px}.cart-line button{border:0;background:none;color:#8a3d32}.total{font-size:19px;font-weight:bold;margin:20px 0}.checkout{width:100%;padding:14px;background:#208b54;color:white;border:0;border-radius:7px;font-weight:bold}
+.empty{text-align:center;color:#777;padding:30px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}nav{gap:12px}.search{width:150px}}
+@media(max-width:680px){header{flex-wrap:wrap}.logo{font-size:21px}nav{order:3;width:100%;justify-content:space-between;font-size:12px}.header-actions{margin-left:auto}.search{width:125px}.hero{min-height:390px;padding:38px 7%}.benefits{grid-template-columns:repeat(2,1fr)}main{padding:35px 4%}.section-head{display:block}.section-head h2{font-size:34px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 10px}.product-info{padding:10px}.product-info h3{font-size:13px}.about{grid-template-columns:1fr;padding:40px 7%}.about h2{font-size:34px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr 1fr}.search{width:105px}.cart-btn{padding:10px}}
+</style>
+</head>
+<body>
+<div class="top">✦ MODA COM PROPÓSITO · VISTA SUA FÉ, COMPARTILHE SUA HISTÓRIA</div>
+<header>
+  <a class="logo" href="#">✝ ECLESIA STORY<small>VISTA SUA FÉ</small></a>
+  <nav><a href="#">Início</a><a href="#colecao">Coleção</a><a href="#sobre">Nossa essência</a><a href="#contato">Contato</a></nav>
+  <div class="header-actions"><input class="search" id="search" placeholder="Buscar peças..." aria-label="Buscar produtos"><button class="cart-btn" onclick="openCart()">Sacola (<span id="cartCount">0</span>)</button></div>
+</header>
+<section class="hero">
+ <div class="hero-copy"><div class="eyebrow">Mais que vestir. É expressar.</div><h1>Vista aquilo<br>em que <i>crê.</i></h1><p>Peças que carregam mensagens eternas para a vida real. Fé, estilo e propósito em cada detalhe.</p><a class="primary" href="#colecao">EXPLORAR COLEÇÃO →</a></div>
+</section>
+<div class="benefits"><div>♡ <b>Compra com propósito</b></div><div>✦ <b>Estampas exclusivas</b></div><div>▣ <b>Peças confortáveis</b></div><div>✝ <b>Fé para vestir</b></div></div>
+<main id="colecao">
+ <div class="section-head"><div><div class="eyebrow">A coleção</div><h2>Peças com propósito.</h2><p>Escolha sua mensagem favorita e leve sua fé para o dia a dia.</p></div>
+ <div class="filters"><button class="active" data-filter="Todos">Todos</button><button data-filter="Camiseta">Camisetas</button><button data-filter="Moletom">Moletons</button><select id="sort" aria-label="Ordenar"><option value="featured">Em destaque</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select></div></div>
+ <div class="grid" id="products"></div>
+</main>
+<section class="about" id="sobre"><div><div class="eyebrow">Nossa essência</div><h2>Uma fé que se vive.<br>Uma história que se veste.</h2></div><p>A Eclesia Story nasceu para transformar convicções em expressão. Criamos camisetas e moletons com mensagens inspiradas na Palavra, para lembrar diariamente aquilo em que acreditamos. Vista sua fé com autenticidade.</p></section>
+<footer id="contato"><div><div class="footer-logo">✝ ECLESIA STORY</div><p>Vista sua fé. Compartilhe sua história.</p></div><div><b>Atendimento</b><p>Contato: adicione seu WhatsApp<br>Trocas e informações</p></div><div><b>Redes sociais</b><p>Instagram · TikTok</p><small>© 2026 Eclesia Story</small></div></footer>
+<div class="drawer-backdrop" id="backdrop" onclick="if(event.target===this)closeCart()"><aside class="drawer"><button class="close" onclick="closeCart()">×</button><h2>Sua sacola</h2><div id="cartItems"></div><div class="total" id="cartTotal">Total: R$ 0,00</div><button class="checkout" onclick="checkout()">Finalizar pedido pelo WhatsApp</button><p style="font-size:11px;color:#777">Configure seu número de WhatsApp no código antes de publicar.</p></aside></div>
+<script>
+const teePhotos=["https://blessedchoice.com.br/cdn/shop/files/FELIZ_NACAO_-_MASC_ADS_4_800x.png?v=1781377630", "https://cdn.awsli.com.br/800x800/56/56602/produto/50702250/0c053ad7cd.jpg", "https://cdn.awsli.com.br/2500x2500/1699/1699730/produto/173660079/e13af8df79.jpg", "https://cianitas.cdn.magazord.com.br/img/2026/05/produto/11916/off-estampa-white-jesus-cristo-3.jpg?ims=630x945", "https://loja.cancaonova.com/upload/produto/imagem/baby-look-n-o-vos-conformeis-com-este-mundo.webp", "https://img.elo7.com.br/product/685x685/3F5EEA1/camiseta-estampada-moda-evangelica-tua-graca-me-basta-algodao.jpg", "https://blessedchoice.com.br/cdn/shop/files/0b5cafae295aef860f9372715dce0032_1200x.jpg?v=1776897274"];
+const hoodiePhotos=["https://dcdn-us.mitiendanube.com/stores/005/709/595/products/moletom-nacao-santa-9fe326b99d1b79ca4717817086183892-480-0.webp", "https://down-br.img.susercontent.com/file/13618ba663687471888bf16a3426040a", "https://down-br.img.susercontent.com/file/69ddfeacc49267c9013b24625bb3cf8c"];
+const products=[
+["Camiseta Jesus é o Caminho","Camiseta",79.90,"JESUS\nÉ O CAMINHO","João 14:6"],
+["Camiseta Graça sobre Graça","Camiseta",84.90,"GRAÇA\nSOBRE GRAÇA","João 1:16"],
+["Camiseta Deus Guia","Camiseta",89.90,"DEUS\nGUIA MEUS PASSOS","Provérbios 3:5"],
+["Camiseta Seja Luz","Camiseta",79.90,"SEJA\nLUZ","Mateus 5:14"],
+["Camiseta Amor Primeiro","Camiseta",84.90,"AMOR\nPRIMEIRO","1 João 4:19"],
+["Camiseta Não Temerei","Camiseta",89.90,"NÃO\nTEMEREI","Salmos 23:4"],
+["Camiseta Tudo Posso","Camiseta",79.90,"TUDO POSSO\nNAQUELE","Filipenses 4:13"],
+["Camiseta Pela Fé","Camiseta",84.90,"PELA\nFÉ","Hebreus 11:1"],
+["Camiseta Sal e Luz","Camiseta",89.90,"SAL &\nLUZ","Mateus 5:13"],
+["Camiseta Reino Eterno","Camiseta",79.90,"REINO\nETERNO","Lucas 1:33"],
+["Moletom Fé Move Montanhas","Moletom",89.90,"FÉ MOVE\nMONTANHAS","Mateus 17:20"],
+["Moletom Filho Amado","Moletom",89.90,"FILHO\nAMADO","1 João 3:1"],
+["Moletom Pela Graça","Moletom",89.90,"PELA\nGRAÇA","Efésios 2:8"],
+["Moletom Caminho e Vida","Moletom",89.90,"CAMINHO\nVERDADE VIDA","João 14:6"],
+["Moletom Luz do Mundo","Moletom",89.90,"LUZ DO\nMUNDO","João 8:12"],
+["Moletom Reino Eterno","Moletom",89.90,"REINO\nETERNO","Salmos 145:13"],
+["Moletom Coragem","Moletom",89.90,"SEJA FORTE\nE CORAJOSO","Josué 1:9"],
+["Moletom Confia","Moletom",89.90,"CONFIA\nNO SENHOR","Provérbios 3:5"],
+["Moletom Ele Vive","Moletom",89.90,"ELE\nVIVE","Lucas 24:6"],
+["Moletom Em Sua Presença","Moletom",89.90,"EM SUA\nPRESENÇA","Salmos 16:11"]
+].map((p,i)=>({id:i+1,name:p[0],type:p[1],price:p[2],print:p[3],verse:p[4],photos:(p[1]==='Camiseta'?teePhotos:hoodiePhotos).map((_,j,arr)=>arr[(i+j)%arr.length])}));
+let filter="Todos",cart=[];
+const money=n=>n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+function render(){
+ let q=document.getElementById("search").value.toLowerCase(),sort=document.getElementById("sort").value;
+ let list=products.filter(p=>(filter==="Todos"||p.type===filter)&&p.name.toLowerCase().includes(q));
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);if(sort==="high")list.sort((a,b)=>b.price-a.price);
+ document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><div class="gallery"><img id="photo-${p.id}" src="${p.photos[0]}" alt="${p.name} — foto de referência de roupa cristã"><div class="gallery-nav">${p.photos.map((_,i)=>`<button class="${i===0?'active':''}" aria-label="Foto ${i+1}" onclick="changePhoto(${p.id},${i},this)"></button>`).join("")}</div></div><div class="product-info"><div class="category">${p.type}</div><h3>${p.name}</h3><div class="sizes">P · M · G · GG</div><div class="price">${money(p.price)}</div><button class="add" onclick="addCart(${p.id})">Adicionar à sacola</button></div></article>`).join("");
+}
+function changePhoto(id,index,btn){let p=products.find(x=>x.id===id);document.getElementById("photo-"+id).src=p.photos[index];btn.parentElement.querySelectorAll("button").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
+function addCart(id){let p=products.find(x=>x.id===id),item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({...p,qty:1});updateCart()}
+function updateCart(){document.getElementById("cartCount").textContent=cart.reduce((s,p)=>s+p.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(p=>`<div class="cart-line"><div><b>${p.name}</b><br>${money(p.price)}<br><button onclick="qty(${p.id},-1)">−</button> ${p.qty} <button onclick="qty(${p.id},1)">+</button></div><button onclick="removeItem(${p.id})">Remover</button></div>`).join(""):'<div class="empty">Sua sacola está vazia.</div>';document.getElementById("cartTotal").textContent="Total: "+money(cart.reduce((s,p)=>s+p.price*p.qty,0))}
+function qty(id,n){let p=cart.find(x=>x.id===id);if(p){p.qty+=n;if(p.qty<=0)removeItem(id);else updateCart()}}
+function removeItem(id){cart=cart.filter(p=>p.id!==id);updateCart()}
+function openCart(){document.getElementById("backdrop").style.display="block";updateCart()}function closeCart(){document.getElementById("backdrop").style.display="none"}
+function checkout(){if(!cart.length){alert("Sua sacola está vazia.");return}const WHATSAPP_NUMBER="";if(!WHATSAPP_NUMBER){alert("Configure seu número com DDI e DDD na variável WHATSAPP_NUMBER do código.");return}let msg="Olá! Quero fazer este pedido na Eclesia Story:%0A"+cart.map(p=>`${p.qty}x ${p.name} — ${money(p.price*p.qty)}`).join("%0A")+"%0ATotal: "+money(cart.reduce((s,p)=>s+p.price*p.qty,0));window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(decodeURIComponent(msg)),"_blank")}
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));render()}));
+document.getElementById("search").addEventListener("input",render);document.getElementById("sort").addEventListener("change",render);render();updateCart();
+</script>
+</body></html>
